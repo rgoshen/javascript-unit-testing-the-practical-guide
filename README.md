@@ -15,6 +15,8 @@
 
 ## Section 1 Getting Started
 
+[Slides](/slides/section-1-slides.pdf)
+
 ### What is testing?
 
 - verify "if something works as intended"
@@ -101,6 +103,8 @@ flowchart TD
 [back to top](#toc)
 
 ## Section 2 Setup and Testing Software
+
+[Slides](/slides/section-2-slides.pdf)
 
 ### Which Tools Are Needed for Testing?
 
