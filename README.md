@@ -102,6 +102,26 @@ flowchart TD
 
 ## Section 2 Setup and Testing Software
 
+### Which Tools Are Needed for Testing?
+
+- Application Setup & Code
+  - Generally independent setup
+  - All you need for manual testing
+  - Testing setup can (and typically will) be integrated
+    - e.g. based on Webpack, Vite, etc...
+- Automated Tests
+  - Test Runner
+    - Runs your tests (i.e., the testing code)
+    - Automatically detects testing code
+    - Display results
+    - e.g. Jest, Karma, Mocha, Jasmine, etc...
+  - Assertion Library
+    - Used to define expected outcomes
+    - Checks whether expectations are met
+    - Supports all kinds of expectations and modes (sync/async)
+    - e.g. Jest, Chai, Expect, Sinon, etc...
+
+
 [back to top](#toc)
 
 ## Section 3 Testing Basics
