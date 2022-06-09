@@ -125,10 +125,11 @@ flowchart TD
     - Supports all kinds of expectations and modes (sync/async)
     - e.g. Jest, Chai, Expect, Sinon, etc...
 
-
 [back to top](#toc)
 
 ## Section 3 Testing Basics
+
+ 
 
 [back to top](#toc)
 
