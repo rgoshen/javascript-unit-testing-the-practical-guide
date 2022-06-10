@@ -38,3 +38,24 @@ it('should yield a correct sum if an array of numeric string values is provided'
   // Assert
   expect(result).toEqual(expectedResult);
 });
+
+it('should yield 0 if an empty array is provided', () => {
+  // Arrange
+  const numbers = [];
+
+  // Act
+  const result = add(numbers);
+
+  // Assert
+  expect(result).toEqual(0);
+});
+
+it('should throw an error if no value is not passed into the function', () => {
+  // Arrange
+
+  // Act
+  const resultFn = () => add(); // will only execute when invoked in the expect()
+
+  // Assert
+  expect(resultFn).toThrow();
+});
