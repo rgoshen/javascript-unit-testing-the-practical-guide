@@ -3,7 +3,17 @@ import { validateStringNotEmpty, validateNumber } from './validation';
 
 describe('validateStringNotEmpty', () => {
   it('should throw an error if the string is empty', () => {
-    const validationFn = () => validateStringNotEmpty('');
+    const input = '';
+
+    const validationFn = () => validateStringNotEmpty(input);
+
+    expect(validationFn).toThrow(/Invalid input - must not be empty/);
+  });
+
+  it('should throw an error if the string is full of blanks', () => {
+    const input = '    ';
+
+    const validationFn = () => validateStringNotEmpty(input);
 
     expect(validationFn).toThrow(/Invalid input - must not be empty/);
   });
