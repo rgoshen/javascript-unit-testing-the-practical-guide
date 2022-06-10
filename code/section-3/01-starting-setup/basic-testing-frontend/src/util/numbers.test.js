@@ -9,11 +9,15 @@ it('should transform a string  number to a number of type number', () => {
   expect(result).toBeTypeOf('number');
 });
 
-it('should return NaN when a non-numeric string is passed in', () => {
+it('should return NaN when a nontransformable value is passed in', () => {
   const input = 'a1';
+  const input2 = {};
+
   const result = transformToNumber(input);
+  const result2 = transformToNumber(input2);
 
   expect(result).toBeNaN();
+  expect(result2).toBeNaN();
 });
 
 it('should return that number of type number when a number is passed in', () => {
