@@ -1,7 +1,7 @@
-import { expect, it } from 'vitest';
-import { add } from './math';
+import { expect, it } from "vitest";
+import { add } from "./math";
 
-it('should sum up all numbers in an array', () => {
+it("should sum up all numbers in an array", () => {
   // Arrange
   const numbers = [1, 2, 3, 4, 5];
   const expectedResult = numbers.reduce((sum, number) => sum + number, 0);
@@ -13,9 +13,9 @@ it('should sum up all numbers in an array', () => {
   expect(result).toEqual(expectedResult);
 });
 
-it('should yield NaN if at least one invalid number is provided', () => {
+it("should yield NaN if at least one invalid number is provided", () => {
   // Arrange
-  const numbers = [1, 2, 'invalid', 4, 5];
+  const numbers = [1, 2, "invalid", 4, 5];
 
   // Act
   const result = add(numbers);
@@ -24,9 +24,9 @@ it('should yield NaN if at least one invalid number is provided', () => {
   expect(result).toBeNaN();
 });
 
-it('should yield a correct sum if an array of numeric string values is provided', () => {
+it("should yield a correct sum if an array of numeric string values is provided", () => {
   // Arrange
-  const numbers = ['1', '2', '3', '4', '5'];
+  const numbers = ["1", "2", "3", "4", "5"];
   const expectedResult = numbers.reduce(
     (sum, number) => sum + parseInt(number, 10),
     0
@@ -39,7 +39,7 @@ it('should yield a correct sum if an array of numeric string values is provided'
   expect(result).toEqual(expectedResult);
 });
 
-it('should yield 0 if an empty array is provided', () => {
+it("should yield 0 if an empty array is provided", () => {
   // Arrange
   const numbers = [];
 
@@ -50,17 +50,17 @@ it('should yield 0 if an empty array is provided', () => {
   expect(result).toEqual(0);
 });
 
-it('should throw an error if no value is not passed into the function', () => {
+it("should throw an error if no value is not passed into the function", () => {
   // Arrange
 
   // Act
   const resultFn = () => add(); // will only execute when invoked in the expect()
 
   // Assert
-  expect(resultFn).toThrow();
+  expect(resultFn).toThrow(/is not iterable/);
 });
 
-it('should throw an error if multiple arguments are provided instead of an array', () => {
+it("should throw an error if multiple arguments are provided instead of an array", () => {
   // Arrange
   const num1 = 1,
     num2 = 2,
@@ -70,5 +70,5 @@ it('should throw an error if multiple arguments are provided instead of an array
   const resultFn = () => add(num1, num2, num3); // will only execute when invoked in the expect()
 
   // Assert
-  expect(resultFn).toThrow();
+  expect(resultFn).toThrow(/is not iterable/);
 });
