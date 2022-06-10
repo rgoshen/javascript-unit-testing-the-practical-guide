@@ -1,17 +1,25 @@
 # JavaScript Unit Testing the Practical Guide
- 
+
 ## TOC
 
-1. [Section 1 - Getting Started](#section-1-getting-started)
-2. [Section 2 - Setup & Testing Software](#section-2-setup-and-testing-software)
-3. [Section 3 - Testing Basics](#section-3-testing-basics)
-4. [Section 4 - Writing Good Tests](#section-4-writing-good-tests)
-5. [Section 5 - Integration Tests](#section-5-integration-tests)
-6. [Section 6 - Advanced Testing Concepts](#section-6-advanced-testing-concepts)
-7. [Section 7 - Mocking & Spies: Dealing with Side Effects](#section-7-mocking-and-spies-dealing-with-side-effects)
-8. [Section 8 - More on Mocking & Diving Deeper](#section-8-more-on-mocking-and-diving-deeper)
-9. [Section 9 - Testing & The DOM (Frontend JavaScript Testing)](#section-9-testing-and-the-dom)
-10. [Section 10 - Course Roundup](#section-10-course-roundup)
+- [JavaScript Unit Testing the Practical Guide](#javascript-unit-testing-the-practical-guide)
+  - [TOC](#toc)
+  - [Section 1 Getting Started](#section-1-getting-started)
+    - [What is testing?](#what-is-testing)
+    - [Unit Testing: What & Why?](#unit-testing-what--why)
+    - [Unit, Integration & End-to-End (E2E) Testing](#unit-integration--end-to-end-e2e-testing)
+    - [Test-Driven Development (TDD)](#test-driven-development-tdd)
+  - [Section 2 Setup and Testing Software](#section-2-setup-and-testing-software)
+    - [Which Tools Are Needed for Testing?](#which-tools-are-needed-for-testing)
+  - [Section 3 Testing Basics](#section-3-testing-basics)
+    - [AAA - Arrange, Act, Assert](#aaa---arrange-act-assert)
+  - [Section 4 Writing Good Tests](#section-4-writing-good-tests)
+  - [Section 5 Integration Tests](#section-5-integration-tests)
+  - [Section 6 Advanced Testing Concepts](#section-6-advanced-testing-concepts)
+  - [Section 7 Mocking and Spies Dealing with Side Effects](#section-7-mocking-and-spies-dealing-with-side-effects)
+  - [Section 8 More on Mocking and Diving Deeper](#section-8-more-on-mocking-and-diving-deeper)
+  - [Section 9 Testing and The DOM](#section-9-testing-and-the-dom)
+  - [Section 10 Course Roundup](#section-10-course-roundup)
 
 ## Section 1 Getting Started
 
@@ -22,6 +30,7 @@
 - verify "if something works as intended"
 
 Types of testing:
+
 - Manual Testing
   - physically testing the code by hand (i.e. write some code, spin up the site and see if it works)
   - tedious & cumbersome
@@ -36,6 +45,7 @@ Types of testing:
 ### Unit Testing: What & Why?
 
 What:
+
 ```mermaid
 graph LR
 
@@ -66,6 +76,7 @@ graph LR
 ```
 
 Why:
+
 - avoids endless amounts of manual testing
 - allows you to cover (close to) 100% of your code & scenarios
 - code changes are tested against all scenarios (almost) instantly
@@ -74,17 +85,16 @@ Why:
 ### Unit, Integration & End-to-End (E2E) Testing
 
 | Unit Testing                                          | Integration Testing                                           | End-to-End (E2E) Testing                                       |
-|-------------------------------------------------------|---------------------------------------------------------------|----------------------------------------------------------------|
- | Test the individual building blocks of an application | Test the combination of building blocks                       | Test entire flows and application features                     |
- | Every building block (unit) is tested standalone      | Verify if building blocks (units) work together               | Test the actual "things" real users would do                   |
- |                                                       |                                                               |                                                                |
- | If all building blocks work, the overall app works    | Even if all units work standalone, the combination could fail | Real users use your app and its features, not individual units |
-
+| ----------------------------------------------------- | ------------------------------------------------------------- | -------------------------------------------------------------- |
+| Test the individual building blocks of an application | Test the combination of building blocks                       | Test entire flows and application features                     |
+| Every building block (unit) is tested standalone      | Verify if building blocks (units) work together               | Test the actual "things" real users would do                   |
+|                                                       |                                                               |                                                                |
+| If all building blocks work, the overall app works    | Even if all units work standalone, the combination could fail | Real users use your app and its features, not individual units |
 
 **You should combine all kinds of tests.**
 
 | Unit Testing                                        | Integration Testing                               | End-to-End (E2E) Testing                           |
-|-----------------------------------------------------|---------------------------------------------------|----------------------------------------------------|
+| --------------------------------------------------- | ------------------------------------------------- | -------------------------------------------------- |
 | Quickly spot and pinpoint breaking changes & errors | Test (parts of) processes & combinations of units | Test realistic user flows & behaviors              |
 | Ignore actual user flows and interferences          | Spotting the exact root of an error can be tricky | Covering all possible behaviors can be challenging |
 
@@ -129,7 +139,16 @@ flowchart TD
 
 ## Section 3 Testing Basics
 
- 
+### AAA - Arrange, Act, Assert
+
+|     |         |                                                                                 |
+| --- | ------- | ------------------------------------------------------------------------------- |
+| A   | Arrange | Define the testing environment & values                                         |
+| A   | Act     | Run the actual code/function that should be tested                              |
+| A   | Assert  | Evaluate the produced value/results and compare it to the expected value/result |
+|     |         |                                                                                 |
+
+Writing good tests is an interative process
 
 [back to top](#toc)
 
