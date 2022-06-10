@@ -59,3 +59,16 @@ it('should throw an error if no value is not passed into the function', () => {
   // Assert
   expect(resultFn).toThrow();
 });
+
+it('should throw an error if multiple arguments are provided instead of an array', () => {
+  // Arrange
+  const num1 = 1,
+    num2 = 2,
+    num3 = 3;
+
+  // Act
+  const resultFn = () => add(num1, num2, num3); // will only execute when invoked in the expect()
+
+  // Assert
+  expect(resultFn).toThrow();
+});
