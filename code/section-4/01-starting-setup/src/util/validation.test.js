@@ -16,7 +16,7 @@ describe('validateStringNotEmpty()', () => {
   });
 
   it('should throw an error if a long string of blanks is provided', () => {
-    const input = '';
+    const input = '    ';
     const validationFn = () => validateStringNotEmpty(input);
     expect(validationFn).toThrow();
   });
