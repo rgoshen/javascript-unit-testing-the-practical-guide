@@ -38,6 +38,8 @@ describe('cleanNumbers()', () => {
     const cleanedNumbers = cleanNumbers(numberValues);
 
     expect(cleanedNumbers[0]).toBeTypeOf('number');
+    expect(cleanedNumbers).toEqual([1, 2]); // this will pass because this does a deep comparison
+    // expect( cleanedNumbers ).toBe([ 1, 2 ]); // this will fail because the values are equal but not the same object
   });
 
   it('should throw an error if an array with at least one empty string is provided', () => {
@@ -46,5 +48,5 @@ describe('cleanNumbers()', () => {
     const cleanFn = () => cleanNumbers(numberValues);
 
     expect(cleanFn).toThrow();
-  })
+  });
 });
