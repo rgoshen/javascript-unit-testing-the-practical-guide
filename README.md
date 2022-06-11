@@ -14,6 +14,10 @@
   - [Section 3 Testing Basics](#section-3-testing-basics)
     - [AAA - Arrange, Act, Assert](#aaa---arrange-act-assert)
   - [Section 4 Writing Good Tests](#section-4-writing-good-tests)
+    - [What To Test & What Not To Test](#what-to-test--what-not-to-test)
+    - [Only Test Your Code](#only-test-your-code)
+    - [Writing Good Tests](#writing-good-tests)
+    - [Only Test One Thing](#only-test-one-thing)
   - [Section 5 Integration Tests](#section-5-integration-tests)
   - [Section 6 Advanced Testing Concepts](#section-6-advanced-testing-concepts)
   - [Section 7 Mocking and Spies Dealing with Side Effects](#section-7-mocking-and-spies-dealing-with-side-effects)
@@ -153,6 +157,35 @@ Writing good tests is an interative process
 [back to top](#toc)
 
 ## Section 4 Writing Good Tests
+
+### What To Test & What Not To Test
+
+- should only test your code
+- don't test any third party code
+- don't test what you can't change
+
+### Only Test Your Code
+
+**e.g. fetch() API**
+
+- Don't test if it works as intended
+- Don't test your server-side code implicitly via your client side code
+  - Write separate tests for your backend code instead
+- Do test your client-side reaction to different responses & errors
+
+### Writing Good Tests
+
+- AAA - Arrange - Act - Assert
+- 1 - Only test one thing
+- Focus on the **essence** of a test when arranging
+- Keep your number of assertions ("expects") low
+
+### Only Test One Thing
+
+What is "one thing"?
+
+- One feature
+  - e.g. validate input or transform it
 
 [back to top](#toc)
 
