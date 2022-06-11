@@ -4,7 +4,7 @@ export function generateResultText(calculationResult) {
   if (calculationResult === 'invalid') {
     resultText = 'Invalid input. You must enter valid numbers.';
   } else if (calculationResult !== 'no-calc') {
-    resultText = 'Result: ' + result;
+    resultText = 'Result: ' + calculationResult;
   }
 
   return resultText;
