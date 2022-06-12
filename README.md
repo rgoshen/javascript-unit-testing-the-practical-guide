@@ -209,6 +209,24 @@ What is "one thing"?
 **Mocks**:
 
 - A replacement for an API that may provide some test specific behavior instead
+- Objects re-programmed with expectations which form a specification of the calls they are expected to receive
+
+**Dummy**:
+
+- objects that are passed around, never actually used
+- usually just used to fill parameter lists
+
+**Fake**:
+
+- objects that have working implementations but usually take some short cut which makes them not suitable for production
+  - e.g. in memory database
+
+**Stubs**:
+
+- provide canned answers to calls made during tests
+- usually not responding to anything outside what's programmed for the test
+- may also record information about calls
+  - e.g. email gateway stub that remembers the message it 'sent' or maybe only how many messages it 'sent'
 
 [back to top](#toc)
 
