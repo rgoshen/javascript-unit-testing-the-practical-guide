@@ -21,6 +21,7 @@
   - [Section 5 Integration Tests](#section-5-integration-tests)
   - [Section 6 Advanced Testing Concepts](#section-6-advanced-testing-concepts)
   - [Section 7 Mocking and Spies Dealing with Side Effects](#section-7-mocking-and-spies-dealing-with-side-effects)
+    - [Spies & Mocks](#spies--mocks)
   - [Section 8 More on Mocking and Diving Deeper](#section-8-more-on-mocking-and-diving-deeper)
   - [Section 9 Testing and The DOM](#section-9-testing-and-the-dom)
   - [Section 10 Course Roundup](#section-10-course-roundup)
@@ -198,6 +199,16 @@ What is "one thing"?
 [back to top](#toc)
 
 ## Section 7 Mocking and Spies Dealing with Side Effects
+
+### Spies & Mocks
+
+**Spies**:
+
+- "Wrappers" around functions or empty replacements for functions that allow you to track if & how a funciton was called
+
+**Mocks**:
+
+- A replacement for an API that may provide some test specific behavior instead
 
 [back to top](#toc)
 
