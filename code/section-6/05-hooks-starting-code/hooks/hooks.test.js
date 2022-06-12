@@ -21,6 +21,13 @@ afterAll(() => {
   console.log('afterAll');
 });
 
+// can add concurrent tests by using it.concurrent or
+// you can add concurrent on the describe block to add it
+// to all tests in the describe block
+
+//Even when not adding the .concurrent property / annotation,
+// tests that are stored in different files are executed concurrently
+
 it('should update the email', () => {
   const newTestEmail = 'test2@test.com';
 
