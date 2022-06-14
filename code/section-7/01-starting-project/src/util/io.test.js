@@ -28,4 +28,13 @@ describe('writeData()', () => {
 
     expect(fs.writeFile).toBeCalledWith(testFilename, testData);
   });
+
+  it('should return a promise that resolves to no value if called correctly', () => {
+    const testData = 'test data';
+    const testFilename = 'test.txt';
+
+    writeData(testData, testFilename);
+
+    return expect(writeData(testData, testFilename)).resolves.toBeUndefined();
+  });
 });
