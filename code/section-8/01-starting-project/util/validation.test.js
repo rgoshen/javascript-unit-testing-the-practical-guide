@@ -11,6 +11,14 @@ describe('validateNotEmpty()', () => {
     expect(validationFn).toThrow();
   });
 
+  it('should throw error if text is full of blanks', () => {
+    const testText = '     ';
+
+    const validationFn = () => validateNotEmpty(testText);
+
+    expect(validationFn).toThrow();
+  });
+
   it('should not throw error if text is valid', () => {
     const testText = 'test';
 
