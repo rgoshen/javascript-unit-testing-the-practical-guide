@@ -24,6 +24,7 @@
     - [Spies & Mocks](#spies--mocks)
   - [Section 8 More on Mocking and Diving Deeper](#section-8-more-on-mocking-and-diving-deeper)
   - [Section 9 Testing and The DOM](#section-9-testing-and-the-dom)
+    - [Use Different Testing Environments](#use-different-testing-environments)
   - [Section 10 Course Roundup](#section-10-course-roundup)
 
 ## Section 1 Getting Started
@@ -236,8 +237,18 @@ What is "one thing"?
 
 ## Section 9 Testing and The DOM
 
+### Use Different Testing Environments
+
+| NodeJS[^*]                                 | JSDOM                                                     | Happy-DOM[^**]                            |
+| ------------------------------------------ | --------------------------------------------------------- | ----------------------------------------- | --------------------------------------------------------- |
+| NodeJS APIs & modules are available        | (Virtual) browser environment with browser APIs & the DOM | NodeJS APIs & modules are available       | (Virtual) browser environment with browser APIs & the DOM |
+| Can't interact with browser & browser APIs | Ideal for testint fronend code & projects                 | Ideal for testint fronend code & projects |
+
 [back to top](#toc)
 
 ## Section 10 Course Roundup
 
 [back to top](#toc)
+
+[^*]: Default
+[^**]: Vitest Only
