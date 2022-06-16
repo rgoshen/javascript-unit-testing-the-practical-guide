@@ -4,15 +4,11 @@
 
 - [JavaScript Unit Testing the Practical Guide](#javascript-unit-testing-the-practical-guide)
   - [TOC](#toc)
-  - [Section 1 Getting Started](#section-1-getting-started)
-    - [What is testing?](#what-is-testing)
-    - [Unit Testing: What & Why?](#unit-testing-what--why)
-    - [Unit, Integration & End-to-End (E2E) Testing](#unit-integration--end-to-end-e2e-testing)
-    - [Test-Driven Development (TDD)](#test-driven-development-tdd)
   - [Section 2 Setup and Testing Software](#section-2-setup-and-testing-software)
     - [Which Tools Are Needed for Testing?](#which-tools-are-needed-for-testing)
   - [Section 3 Testing Basics](#section-3-testing-basics)
     - [AAA - Arrange, Act, Assert](#aaa---arrange-act-assert)
+      - [Examples](#examples)
   - [Section 4 Writing Good Tests](#section-4-writing-good-tests)
     - [What To Test & What Not To Test](#what-to-test--what-not-to-test)
     - [Only Test Your Code](#only-test-your-code)
@@ -27,96 +23,19 @@
     - [Use Different Testing Environments](#use-different-testing-environments)
   - [Section 10 Course Roundup](#section-10-course-roundup)
 
-## Section 1 Getting Started
+Automated testing is a **key concept** in modern (web) development.
 
-[Slides](/slides/section-1-slides.pdf)
+Yet it is a concept that can be intimidating at first, hence many developers shy away from diving into testing and adding tests to their projects.
 
-### What is testing?
+This course will teach you automated unit & integration testing with JavaScript **from the ground up**. You will learn how tests are written and added to your projects, what should (and should not) be tested and how you can test both simple as well as more complex code.
 
-- verify "if something works as intended"
+You will learn about the software and setup required to write automated tests and example projects will be provided as part of the course. It's a hands-on, practical course, hence you won't get stuck in theory - instead you'll be able to learn all key concepts at real examples.
 
-Types of testing:
+In the course, **Vitest** will be used as the main testing library & tool. It's a modern JavaScript test runner and assertion library that provides **Jest** compatibility. Hence what you'll learn in this course will help you no matter if you're working with Vitest or Jest. And the core concepts will apply, no matter which testing setup you're using at all!
 
-- Manual Testing
-  - physically testing the code by hand (i.e. write some code, spin up the site and see if it works)
-  - tedious & cumbersome
-  - error prone
-  - often incomplete (not all scenarios covered)
-- Automated Testing
-  - write some code to test the code you wrote for the feature/site you are working on
-  - initial effort (write tests), no effort thereafter
-  - predictable & consistent
-  - high/complete code & scenario coverage can be achieved
+As part of this course, typical testing problems will be defined and solved and common strategies like mocking or working with spies are taught in great detail. This course also does not focus on specific types of JavaScript projects - neither does it focus on any specific library or framework.
 
-### Unit Testing: What & Why?
-
-What:
-
-```mermaid
-graph LR
-
-    subgraph Unit
-        b1[A building block of your application]
-        b2[Ideally, the smallest possible building block]
-        b3[e.g., a function, a class, a component]
-    end
-```
-
-```mermaid
-graph TB
-    subgraph applicaiton
-        unit1[Unit 1]
-        unit2[Unit 2]
-        unit3[Unit 3]
-        unit4[Unit 4]
-    end
-```
-
-```mermaid
-graph LR
-    b1[App = combination of all units]
-    b2[if all units were tested, the overall app should work]
-    b3[backed up by integration tests]
-    b4[changes are always tested against all units to avoid bugs]
-    b2 --> b3
-```
-
-Why:
-
-- avoids endless amounts of manual testing
-- allows you to cover (close to) 100% of your code & scenarios
-- code changes are tested against all scenarios (almost) instantly
-- write cleaner & better code (because testing then becomes easier)
-
-### Unit, Integration & End-to-End (E2E) Testing
-
-| Unit Testing                                          | Integration Testing                                           | End-to-End (E2E) Testing                                       |
-| ----------------------------------------------------- | ------------------------------------------------------------- | -------------------------------------------------------------- |
-| Test the individual building blocks of an application | Test the combination of building blocks                       | Test entire flows and application features                     |
-| Every building block (unit) is tested standalone      | Verify if building blocks (units) work together               | Test the actual "things" real users would do                   |
-|                                                       |                                                               |                                                                |
-| If all building blocks work, the overall app works    | Even if all units work standalone, the combination could fail | Real users use your app and its features, not individual units |
-
-**You should combine all kinds of tests.**
-
-| Unit Testing                                        | Integration Testing                               | End-to-End (E2E) Testing                           |
-| --------------------------------------------------- | ------------------------------------------------- | -------------------------------------------------- |
-| Quickly spot and pinpoint breaking changes & errors | Test (parts of) processes & combinations of units | Test realistic user flows & behaviors              |
-| Ignore actual user flows and interferences          | Spotting the exact root of an error can be tricky | Covering all possible behaviors can be challenging |
-
-![testing pyramid](images/test-automation-pyramid.jpeg)
-[source](https://3fxtqy18kygf3on3bu39kh93-wpengine.netdna-ssl.com/wp-content/uploads/2020/01/test-automation-pyramid.jpg)
-
-### Test-Driven Development (TDD)
-
-A framework/philosophy for writing tests
-
-```mermaid
-flowchart TD
-    1[1. Write failing test first] --> 2[2. Implement the code ot make the test succeed] --> 3[3. Refactor] --> 1
-```
-
-[back to top](#toc)
+Instead, you'll learn how to automatically test your (vanilla) JavaScript code, no matter if it's a NodeJS or frontend project. The fundamentals you'll gain in this course will help you in all your future projects - backend (NodeJS) and frontend (vanilla JS, React, Vue, Angular) alike.
 
 ## Section 2 Setup and Testing Software
 
@@ -145,6 +64,8 @@ flowchart TD
 
 ## Section 3 Testing Basics
 
+[Slides](/slides/section-3-slides.pdf)
+
 ### AAA - Arrange, Act, Assert
 
 |     |         |                                                                                 |
@@ -156,9 +77,242 @@ flowchart TD
 
 Writing good tests is an interative process
 
+#### Examples
+
+*math.js*
+
+```javascript
+export function add(numbers) {
+  let sum = 0;
+
+  for (const number of numbers) {
+    sum += +number;
+  }
+  return sum;
+}
+```
+
+*math.test.js*
+
+```javascript
+import { describe, expect, it } from 'vitest';
+import { add } from './math';
+
+describe('add', () => {
+  it('should sum up all numbers in an array', () => {
+    // Arrange
+    const numbers = [1, 2, 3, 4, 5];
+    const expectedResult = numbers.reduce((sum, number) => sum + number, 0);
+
+    // Act
+    const result = add(numbers);
+
+    // Assert
+    expect(result).toEqual(expectedResult);
+  });
+
+  it('should yield NaN if at least one invalid number is provided', () => {
+    // Arrange
+    const numbers = [1, 2, 'invalid', 4, 5];
+
+    // Act
+    const result = add(numbers);
+
+    // Assert
+    expect(result).toBeNaN();
+  });
+
+  it('should yield a correct sum if an array of numeric string values is provided', () => {
+    // Arrange
+    const numbers = ['1', '2', '3', '4', '5'];
+    const expectedResult = numbers.reduce(
+      (sum, number) => sum + parseInt(number, 10),
+      0
+    );
+
+    // Act
+    const result = add(numbers);
+
+    // Assert
+    expect(result).toEqual(expectedResult);
+  });
+
+  it('should yield 0 if an empty array is provided', () => {
+    // Arrange
+    const numbers = [];
+
+    // Act
+    const result = add(numbers);
+
+    // Assert
+    expect(result).toEqual(0);
+  });
+
+  it('should throw an error if no value is not passed into the function', () => {
+    // Arrange
+
+    // Act
+    const resultFn = () => add(); // will only execute when invoked in the expect()
+
+    // Assert
+    expect(resultFn).toThrow(/is not iterable/);
+  });
+
+  it('should throw an error if multiple arguments are provided instead of an array', () => {
+    // Arrange
+    const num1 = 1,
+      num2 = 2,
+      num3 = 3;
+
+    // Act
+    const resultFn = () => add(num1, num2, num3); // will only execute when invoked in the expect()
+
+    // Assert
+    expect(resultFn).toThrow(/is not iterable/);
+  });
+});
+```
+
+*numbers.js*
+
+```javascript
+export function transformToNumber(value) {
+  return +value;
+}
+```
+
+*numbers.test.js*
+
+```javascript
+import { it, expect, describe } from 'vitest';
+import { transformToNumber } from './numbers';
+
+describe('transformToNumber', () => {
+  it('should transform a string  number to a number of type number', () => {
+    const input = '1';
+    const result = transformToNumber(input);
+
+    expect(result).toEqual(+input);
+    expect(result).toBeTypeOf('number');
+  });
+
+  it('should return NaN when a nontransformable value is passed in', () => {
+    const input = 'a1';
+    const input2 = {};
+
+    const result = transformToNumber(input);
+    const result2 = transformToNumber(input2);
+
+    expect(result).toBeNaN();
+    expect(result2).toBeNaN();
+  });
+
+  it('should return that number of type number when a number is passed in', () => {
+    const input = 1;
+    const result = transformToNumber(input);
+
+    expect(result).toEqual(input);
+    expect(result).toBeTypeOf('number');
+  });
+
+  it('should return NaN when nothing is passed in', () => {
+    const result = transformToNumber();
+
+    expect(result).toBeNaN();
+  });
+
+  it('should return 0 when an empty string is passed in', () => {
+    const input = '';
+    const result = transformToNumber(input);
+
+    expect(result).toEqual(0);
+  });
+});
+```
+
+*validation.js*
+
+```javascript
+export function validateStringNotEmpty(value) {
+  if (value.trim().length === 0) {
+    throw new Error('Invalid input - must not be empty.');
+  }
+}
+
+export function validateNumber(number) {
+  if (isNaN(number) || typeof number !== 'number') {
+    throw new Error('Invalid number input.');
+  }
+}
+```
+
+*validation.test.js*
+
+```javascript
+import { it, expect, describe } from 'vitest';
+import { validateStringNotEmpty, validateNumber } from './validation';
+
+describe('validateStringNotEmpty', () => {
+  it('should throw an error if the string is empty', () => {
+    const input = '';
+
+    const validationFn = () => validateStringNotEmpty(input);
+
+    expect(validationFn).toThrow(/Invalid input - must not be empty/);
+  });
+
+  it('should throw an error if the string is full of blanks', () => {
+    const input = '    ';
+
+    const validationFn = () => validateStringNotEmpty(input);
+
+    expect(validationFn).toThrow(/Invalid input - must not be empty/);
+  });
+
+  it('should not throw an error if the string is not empty', () => {
+    const input = 'asdf';
+    const validationFn = () => validateStringNotEmpty(input);
+
+    expect(validationFn).not.toThrow(/Invalid input - must not be empty/);
+  });
+});
+
+describe('validateNumber', () => {
+  it('should throw an error if the number is not a number', () => {
+    const input = 'asdf';
+    const validationFn = () => validateNumber(input);
+
+    expect(validationFn).toThrow(/Invalid number input/);
+  });
+
+  it('should throw an error if the input is NaN', () => {
+    const input = NaN;
+    const validationFn = () => validateNumber(input);
+
+    expect(validationFn).toThrow(/Invalid number input/);
+  });
+
+  it('should throw an error if the number is a numeric string', () => {
+    const input = '1';
+    const validationFn = () => validateNumber(input);
+
+    expect(validationFn).toThrow(/Invalid number input/);
+  });
+
+  it('should not throw an error if the input is a number', () => {
+    const input = 1;
+    const validationFn = () => validateNumber(input);
+
+    expect(validationFn).not.toThrow(/Invalid number input/);
+  });
+});
+```
+
 [back to top](#toc)
 
 ## Section 4 Writing Good Tests
+
+[Slides](/slides/section-4-slides.pdf)
 
 ### What To Test & What Not To Test
 
@@ -201,6 +355,8 @@ What is "one thing"?
 
 ## Section 7 Mocking and Spies Dealing with Side Effects
 
+[Slides](/slides/section-7-slides.pdf)
+
 ### Spies & Mocks
 
 **Spies**:
@@ -236,6 +392,8 @@ What is "one thing"?
 [back to top](#toc)
 
 ## Section 9 Testing and The DOM
+
+[Slides](/slides/section-9-slides.pdf)
 
 ### Use Different Testing Environments
 
